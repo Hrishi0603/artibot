@@ -30,18 +30,28 @@ def generate_launch_description():
     spawn_entity = Node(package='ros_gz_sim', executable='create',
         arguments=['-topic', 'robot_description',
                    '-name', 'my_bot', 
-                   '-entity', 'my_bot_entity'],
+                   '-allow_renaming', 'true'],
         output='screen')
+    
 
-    # 4. The Bridge (Moved inside the function)
     bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         arguments=[
             '/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist',
-            '/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan',
-            '/model/my_bot/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry',
-            '/model/my_bot/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'
+            '/model/my_bot/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+            '/model/my_bot/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
+            '/model/my_bot/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V',
+            '/model/my_bot/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model', 
+            '/camera/image_raw@sensor_msgs/msg/Image@gz.msgs.Image',
+            '/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo'
+        ],
+
+        remappings=[
+            ('/model/my_bot/odometry', '/odom'),
+            ('/model/my_bot/tf', '/tf'),
+            ('/model/my_bot/joint_states', '/joint_states'),
+            ('/model/my_bot/scan', '/scan')
         ],
         output='screen'
     )

@@ -27,11 +27,12 @@
     <gazebo reference="laser_frame">
         <material>Gazebo/Red</material>
 
-        <sensor name="laser" type="gpu_ray">
+        <sensor name="laser" type="gpu_lidar">
+            <always_on>true</always_on>
             <pose> 0 0 0 0 0 0 </pose>
             <visualize>true</visualize>
             <update_rate>10</update_rate>
-            <ray>
+            <lidar>
                 <scan>
                     <horizontal>
                         <samples>360</samples>
@@ -43,8 +44,10 @@
                     <min>0.3</min>
                     <max>12</max>
                 </range>
-            </ray>
-            </sensor>
+            </lidar>
+            <topic>model/my_bot/scan</topic>
+            <gz_frame_id>laser_frame</gz_frame_id>
+        </sensor>
     </gazebo>
 
 </robot>
