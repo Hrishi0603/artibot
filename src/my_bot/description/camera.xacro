@@ -17,9 +17,9 @@
             <material name="black"/>
         </visual>
         <visual>
-            <origin xyz="0 0 -0.05"/>
+            <origin xyz="0.005 0 0" rpy="0 ${pi/2} 0"/>
             <geometry>
-                <cylinder radius="0.002" length="0.1"/>
+                <cylinder radius="0.005" length="0.005"/>
             </geometry>
             <material name="green"/>
         </visual>
