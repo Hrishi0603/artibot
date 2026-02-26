@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBot | Mission Control</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/roslib@1/build/roslib.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ros2d@0/build/ros2d.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nipplejs@0.10.1/dist/nipplejs.min.js"></script>
+</head>
+<body>
+    <div class="app">
+        <div class="viewport">
+            <img id="camera-stream" src="https://via.placeholder.com/1920x1080?text=WAITING+FOR+SIGNAL...">
+            
+            <div class="overlay-top">
+                <div class="telemetry">
+                    <div class="stat">VEL <span id="v-val">0.00</span></div>
+                    <div class="stat">ANG <span id="a-val">0.00</span></div>
+                </div>
+            </div>
+
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <div class="bottom-bar">
+            <div id="steer-zone" class="control-zone"></div>
+
+            <div class="pedal-zone control-zone">
+                <button id="throttle" class="circle-btn throttle-btn">GO</button>
+                <button id="brake" class="circle-btn brake-btn">STP</button>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

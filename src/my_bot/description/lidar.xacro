@@ -41,8 +41,8 @@
                     </horizontal>
                 </scan>
                 <range>
-                    <min>0.3</min>
-                    <max>12</max>
+                    <min>0.0</min>
+                    <max>25</max>
                 </range>
             </lidar>
             <topic>scan</topic>
@@ -51,5 +51,3 @@
     </gazebo>
 
 </robot>
-
-

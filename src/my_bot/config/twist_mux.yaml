@@ -1,0 +1,21 @@
+# twist_mux:
+#   ros__parameters:
+#     use_stamped: true
+#     topics:
+#       keyboard:
+#         topic: cmd_vel
+#         timeout: 0.5
+#         priority: 100
+    
+
+
+twist_mux:
+  ros__parameters:
+
+    use_stamped: true
+
+    topics:
+      keyboard:
+        topic   : cmd_vel_keyboard
+        timeout : 0.5
+        priority: 90
