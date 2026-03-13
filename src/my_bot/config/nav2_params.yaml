@@ -86,6 +86,7 @@ bt_navigator:
 
 controller_server:
   ros__parameters:
+    enable_stamped_cmd_vel: true
     controller_frequency: 20.0
     costmap_update_timeout: 0.30
     min_x_velocity_threshold: 0.001
@@ -229,7 +230,7 @@ local_costmap:
       filters: ["keepout_filter"]
       keepout_filter:
         plugin: "nav2_costmap_2d::KeepoutFilter"
-        enabled: KEEPOUT_ZONE_ENABLED
+        enabled: false  
         filter_info_topic: "keepout_costmap_filter_info"
         override_lethal_cost: True
         lethal_override_cost: 200
@@ -283,13 +284,13 @@ global_costmap:
       filters: ["keepout_filter", "speed_filter"]
       keepout_filter:
         plugin: "nav2_costmap_2d::KeepoutFilter"
-        enabled: KEEPOUT_ZONE_ENABLED
+        enabled: false
         filter_info_topic: "keepout_costmap_filter_info"
         override_lethal_cost: True
         lethal_override_cost: 200
       speed_filter:
         plugin: "nav2_costmap_2d::SpeedFilter"
-        enabled: SPEED_ZONE_ENABLED
+        enabled: false
         filter_info_topic: "speed_costmap_filter_info"
         speed_limit_topic: "speed_limit"
       obstacle_layer:
@@ -398,6 +399,7 @@ smoother_server:
 
 behavior_server:
   ros__parameters:
+    enable_stamped_cmd_vel: true
     local_costmap_topic: local_costmap/costmap_raw
     global_costmap_topic: global_costmap/costmap_raw
     local_footprint_topic: local_costmap/published_footprint
@@ -466,6 +468,7 @@ route_server:
 
 velocity_smoother:
   ros__parameters:
+    enable_stamped_cmd_vel: true
     smoothing_frequency: 20.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
