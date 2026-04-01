@@ -13,9 +13,16 @@ twist_mux:
   ros__parameters:
 
     use_stamped: true
+    # use_stamped: false
 
     topics:
       keyboard:
         topic   : cmd_vel_keyboard
         timeout : 0.5
-        priority: 90
+        priority: 100
+
+    topics:
+      navigation:
+        topic   : cmd_vel_nav
+        timeout : 0.5
+        priority: 10
