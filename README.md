@@ -6,11 +6,11 @@
 
 A complete ROS 2 simulation of a differential drive robot navigating complex maze environments. This project integrates a custom URDF with `ros2_control` for precise kinematics in Gazebo Ignition, utilizes the SLAM Toolbox for real-time 2D mapping, and leverages the Nav2 stack for autonomous path planning and obstacle avoidance.
 
-## 🎥 Demonstration
+<!-- ## 🎥 Demonstration
 
 > **[Insert GIF/Video of robot navigating the maze in Gazebo here]**
 
-> **[Insert RViz2 Screenshot showing the 2D occupancy grid and costmaps here]**
+> **[Insert RViz2 Screenshot showing the 2D occupancy grid and costmaps here]** -->
 
 ## 🏗️ System Architecture & Features
 
