@@ -87,10 +87,10 @@ bt_navigator:
 controller_server:
   ros__parameters:
     enable_stamped_cmd_vel: true
-    controller_frequency: 20.0
+    controller_frequency: 5.0
     costmap_update_timeout: 0.30
     min_x_velocity_threshold: 0.001
-    min_y_velocity_threshold: 0.5
+    min_y_velocity_threshold: 0.0 # changed from 0.5 to 0.0
     min_theta_velocity_threshold: 0.001
     failure_tolerance: 0.3
     progress_checker_plugins: ["progress_checker"]
@@ -118,19 +118,19 @@ controller_server:
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"
       time_steps: 56
-      model_dt: 0.05
+      model_dt: 0.2 # changed according to the frequency
       batch_size: 2000
       ax_max: 3.0
       ax_min: -3.0
-      ay_max: 3.0
-      ay_min: -3.0
+      ay_max: 0.0                      # CHANGE: 3.0 to 0.0
+      ay_min: 0.0                      # CHANGE: -3.0 to 0.0
       az_max: 3.5
       vx_std: 0.2
-      vy_std: 0.2
+      vy_std: 0.0                      # CHANGE: 0.2 to 0.0
       wz_std: 0.4
-      vx_max: 0.5
+      vx_max: 10.5                      # CHANGE: 0.5 to 1.0 (or your desired max)
       vx_min: -0.35
-      vy_max: 0.5
+      vy_max: 0.0                      # CHANGE: 0.5 to 0.0
       wz_max: 1.9
       iteration_count: 1
       prune_distance: 1.7
@@ -237,7 +237,7 @@ local_costmap:
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 3.0
-        inflation_radius: 0.70
+        inflation_radius: 1.5
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
@@ -318,7 +318,7 @@ global_costmap:
         map_subscribe_transient_local: True
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 3.0
+        cost_scaling_factor: 1.0
         inflation_radius: 0.7
       always_send_full_costmap: True
       service_introspection_mode: "disabled"
@@ -472,7 +472,7 @@ velocity_smoother:
     smoothing_frequency: 20.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [0.5, 0.0, 2.0]
+    max_velocity: [1.0, 0.0, 2.0]   # CHANGE: [0.5, 0.0, 2.0] to [1.0, 0.0, 2.0]
     min_velocity: [-0.5, 0.0, -2.0]
     max_accel: [2.5, 0.0, 3.2]
     max_decel: [-2.5, 0.0, -3.2]

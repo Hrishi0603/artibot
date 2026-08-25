@@ -57,7 +57,7 @@
             </camera>
 
             <topic>camera/image_raw</topic>
-            <get_frame_id>camera_link_optical</get_frame_id>
+            <frame_id>camera_link_optical</frame_id>
 
         </sensor>
     </gazebo>
